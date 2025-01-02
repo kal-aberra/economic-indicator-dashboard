@@ -4,6 +4,7 @@ from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
 app = Dash(__name__)
 df = pd.read_csv("merged_economic_indicators_2000_2024.csv")
+
 #creating dropdown options to select economic indicators
 dropdown_options = [
     {'label': 'GDP (Current US$))', 'value': 'GDP (Current US$)'},
@@ -18,20 +19,22 @@ app.layout = html.Div([
     html.Div([
         html.Label("Select Indicator:"),
         dcc.Dropdown(
+            className = "dccDropdown",
             id='indicator-dropdown',
             options=dropdown_options,
             value="GDP (Current US$)"
         )
     ]),
     html.Div([
-        html.Label("Select Country"),
+        html.Label("Select Country:"),
         dcc.Dropdown(
+            className = "dccDropdown",
             id="country-dropdown",
             options=country_dropdown_options,
             value= df['Country Name'].unique()[0]
         )
     ]),
-    dcc.Graph("indicator-graph"),
+    dcc.Graph(className = "dccGraph", id="indicator-graph"),
 ])
 #callback to update app
 @app.callback(

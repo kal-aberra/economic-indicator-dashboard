@@ -1,7 +1,4 @@
 import pandas as pd
-import warnings
-warnings.filterwarnings("ignore", message="numpy.dtype size changed")
-warnings.filterwarnings("ignore", message="numpy.ufunc size changed")
 #Load datasets
 #Filtered from World Bank Group Datasets, only from years 2000-2024
 gdp = pd.read_csv(r"g:\Economic Indicators\gdp_2000_2024.csv")
